@@ -10,4 +10,4 @@ run time. Paper 2 is the first project that uses this engine, not part of
 the engine itself.
 """
 
-__version__ = "0.1.0-dev"
+__version__ = "0.2.0a1"

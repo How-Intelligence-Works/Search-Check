@@ -4,7 +4,7 @@
 
 It separates the reusable engine from each study's configuration. A project supplies registered queries, source routes, and (optionally) a benchmark corpus; the engine executes and logs database-specific searches, checks benchmark recovery, creates a reproducible manual relevance sample, deduplicates the retrieved corpus, and produces auditable diagnostics.
 
-## What v0.1 alpha does
+## What v0.2 alpha does
 
 - Versioned connectors for OpenAlex, PubMed, Europe PMC, ERIC, OpenAIRE, CORE, Semantic Scholar, World Bank Documents & Reports, DOAJ, RePEc, BASE, Lens, Scopus, Web of Science, and Embase.
 - Keeps conceptual queries separate from database-specific translations and logs the exact executed query.
@@ -63,13 +63,32 @@ For a full registered run, replace `Q02.2` with `all`.
 
 Relevance coding is deliberately not automated. The software can retrieve, normalize, sample, match and report; the researcher remains responsible for relevance judgments and KEEP/REVISE/SPLIT/MERGE decisions.
 
-Database query languages are not assumed equivalent. Connectors retain a translation version and status. A connector marked `PILOT-UNTESTED` must be empirically checked before its results are treated as validated for a formal review.
+Database query languages are not assumed equivalent. Connectors retain a translation version and status. Connector status is release-specific operational metadata, not a permanent certification. `PILOT-UNTESTED` means that the connector is included but has not been live-tested against its upstream service for this release. Researchers should inspect run logs and verify successful retrieval for the databases used in a formal review; upstream APIs, query languages, authentication requirements, and access policies can change independently of Search Check.
 
 Several connectors require external credentials or institutional entitlement. The software does not grant or bypass access. Public deployments should not be used to submit confidential API credentials unless the deployment is controlled by the researcher.
 
+## Browser interface
+
+The repository also includes the current guided static interface in `web/`. It provides use-case flows for:
+
+- query relevance checking;
+- benchmark recovery;
+- search-strategy comparison; and
+- a complete search check.
+
+The browser interface complements the Python engine. The engine retains all 15 database/source connectors and the reproducible execution, deduplication, provenance, sampling, benchmark, and reporting workflow.
+
+## Connector maintenance
+
+Search Check deliberately retains connectors even when a particular release has not been live-tested against every upstream service. Database integrations are maintenance-dependent: endpoints, authentication, entitlements, query syntax, response formats, and rate limits can change.
+
+Connector status therefore describes what has been checked for a particular release. It should not be read as a permanent statement that a database is supported or unsupported. Failed searches remain visible in the run record rather than being silently treated as successful retrieval.
+
+See `VALIDATION.md` for the release-status convention.
+
 ## Current maturity
 
-`0.1.0a1` is a public-alpha candidate, not a claim of production maturity. The core engine has synthetic tests for deduplication and benchmark matching, but source adapters still require live smoke testing against their upstream APIs. API behavior can change independently of this package.
+`0.2.0a1` is a public alpha, not a claim of production maturity or permanent connector compatibility. The core engine has synthetic tests for deduplication and benchmark matching. Live source behavior should be verified from the logs when a connector is used because upstream services can change independently of this package.
 
 ## License
 
