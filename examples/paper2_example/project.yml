@@ -1,0 +1,38 @@
+# Copy this folder to start a new project. Nothing in ../engine/ should need
+# to change to support a different study — if it does, that's a sign
+# something project-specific leaked into the engine.
+
+contact_email: "your-email@example.com"   # required by OpenAlex/PubMed/Europe PMC's free-tier "polite pool"
+download_cap: 2000                         # pilot-phase ceiling per query x database; see README
+max_pages: 20
+sleep_seconds: 0.34
+out_dir: "results"
+
+# Both optional, both genuinely free (no institutional access needed):
+core_api_key: ""              # register free at https://core.ac.uk/services/api — anonymous
+                               # CORE requests are reliably rate-limited without one
+semantic_scholar_api_key: ""  # optional free registration at
+                               # https://www.semanticscholar.org/product/api — works without
+                               # a key too, just at a shared ~1 req/sec pool instead of your own
+
+# Gated sources — only usable if YOU already have institutional access.
+# Nothing here grants access; these fields just let the engine use YOUR
+# existing subscription the same way a browser session would.
+scopus_api_key: ""       # requires institutional subscription; https://dev.elsevier.com
+scopus_insttoken: ""     # needed unless calling from a recognized campus IP range
+wos_api_key: ""          # requires institutional subscription to the WoS *Expanded* API
+                         # specifically; https://developer.clarivate.com
+base_api_key: ""         # https://www.base-search.net/about/en/api.php — access model
+                         # inconsistently documented, may also need IP whitelisting
+lens_api_key: ""         # free for research use but APPROVAL-GATED (not instant);
+                         # https://www.lens.org/lens/user/subscriptions
+embase_api_key: ""       # granted case-by-case by Elsevier, separate from Scopus access;
+                         # https://dev.elsevier.com/embase_apis.html
+embase_insttoken: ""
+
+# Only OpenAlex indexing is verified by default (matches the original Paper 2
+# benchmark corpus, which only tracks that one column). Add more database
+# names here once you've independently verified their indexing status for
+# your own benchmark corpus.
+verified_indexing_databases:
+  - OpenAlex
