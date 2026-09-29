@@ -1,4 +1,4 @@
-"""search_validator — benchmark-driven search-strategy validation engine.
+"""Search Check — benchmark-driven search-strategy validation engine.
 
 Engine code (this package) is generic: it knows how to talk to OpenAlex,
 PubMed, Europe PMC, ERIC and OpenAIRE, how to match results against a

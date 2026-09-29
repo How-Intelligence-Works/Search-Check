@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "search-validator"
+name = "search-check"
 version = "0.1.0a1"
 description = "Benchmark-driven multi-database search-strategy validation"
 readme = "README.md"
@@ -12,7 +12,7 @@ license = {text = "MIT"}
 dependencies = ["requests>=2.31", "pyyaml>=6.0"]
 
 [project.scripts]
-search-validator = "search_validator.cli:main"
+search-check = "search_validator.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["search_validator*"]

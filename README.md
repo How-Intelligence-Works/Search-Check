@@ -1,6 +1,6 @@
-# Search Validator
+# Search Check
 
-**Search Validator** is an open-source, benchmark-driven engine for testing whether a literature-search strategy actually retrieves the literatures it is intended to represent across the databases in which it will be executed.
+**Search Check** is an open-source, benchmark-driven engine for testing whether a literature-search strategy actually retrieves the literatures it is intended to represent across the databases in which it will be executed.
 
 It separates the reusable engine from each study's configuration. A project supplies registered queries, source routes, and (optionally) a benchmark corpus; the engine executes and logs database-specific searches, checks benchmark recovery, creates a reproducible manual relevance sample, deduplicates the retrieved corpus, and produces auditable diagnostics.
 
@@ -36,13 +36,13 @@ Copy `examples/paper2_example/` and edit:
 
 ```bash
 python -m pip install -e .
-search-validator --project examples/paper2_example --run Q02.2
-search-validator --project examples/paper2_example --deduplicate
-search-validator --project examples/paper2_example --anchor-matrix
-search-validator --project examples/paper2_example --sample
+search-check --project examples/paper2_example --run Q02.2
+search-check --project examples/paper2_example --deduplicate
+search-check --project examples/paper2_example --anchor-matrix
+search-check --project examples/paper2_example --sample
 # Manually code relevance in results/coding_sample.csv
-search-validator --project examples/paper2_example --summarize
-search-validator --project examples/paper2_example --report
+search-check --project examples/paper2_example --summarize
+search-check --project examples/paper2_example --report
 ```
 
 For a full registered run, replace `Q02.2` with `all`.
